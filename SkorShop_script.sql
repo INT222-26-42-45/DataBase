@@ -31,7 +31,7 @@ ALTER TABLE `Colors` ADD CONSTRAINT `colors_pk` PRIMARY KEY ( `ColorId` );
 
 DROP TABLE IF EXISTS `Users`;
 CREATE TABLE `Users` (
-   `UserId` INT(10) NOT NULL,
+   `UserId` INT(10) NOT NULL AUTO_INCREMENT,
    `FirstName` VARCHAR(45) NOT NULL,
    `LastName` VARCHAR(45) NOT NULL,
    `DOB` DATE NOT NULL,
@@ -39,9 +39,9 @@ CREATE TABLE `Users` (
    `Email` VARCHAR(45) NOT NULL,
    `Tel` VARCHAR(10) NOT NULL,
    `UserName` VARCHAR(30) NOT NULL,
-   `Password` VARCHAR(45) NOT NULL 
+   `Password` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (UserId) 
 );
-ALTER TABLE `Users` ADD CONSTRAINT `user_pk` PRIMARY KEY ( `UserId` );
 ALTER TABLE `Users` ADD CONSTRAINT `username_uk` UNIQUE ( `UserName` );
 ALTER TABLE `Users` ADD CONSTRAINT `password_uk` UNIQUE ( `Password` );
 
@@ -68,13 +68,13 @@ ALTER TABLE `SkorProduct` ADD CONSTRAINT `skorproduct_pk` PRIMARY KEY ( `Product
 
 DROP TABLE IF EXISTS `Carts`;
 CREATE TABLE `Carts` (
-    `CartId` INT(10) NOT NULL,
+    `CartId` INT(10) NOT NULL AUTO_INCREMENT,
     `UserId` INT(10) NOT NULL,
     `ProductId` INT(10) NOT NULL,
     `Quantity` INT(3) NOT NULL,
-    `Total` DECIMAL(10,2) NOT NULL
+    `Total` DECIMAL(10,2) NOT NULL,
+     PRIMARY KEY (CartId) 
 );
-ALTER TABLE `Carts` ADD CONSTRAINT `cartId_pk` PRIMARY KEY ( `CartId` );
 
 ALTER TABLE `Carts`
     ADD CONSTRAINT `cartid` FOREIGN KEY ( `UserId` )
