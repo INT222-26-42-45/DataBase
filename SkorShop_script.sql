@@ -39,11 +39,10 @@ CREATE TABLE `Users` (
    `Email` VARCHAR(45) NOT NULL,
    `Tel` VARCHAR(10) NOT NULL,
    `UserName` VARCHAR(30) NOT NULL,
-   `Password` VARCHAR(45) NOT NULL,
+   `Password` VARCHAR(1000) NOT NULL,
     PRIMARY KEY (UserId) 
 );
 ALTER TABLE `Users` ADD CONSTRAINT `username_uk` UNIQUE ( `UserName` );
-ALTER TABLE `Users` ADD CONSTRAINT `password_uk` UNIQUE ( `Password` );
 
 DROP TABLE IF EXISTS `Roles`;
 CREATE TABLE `Roles` (
@@ -148,38 +147,10 @@ insert into `Colors` (ColorId, ColorName) values
 (9, '#EF233C'),
 (10, '#FFE100');
 
-/*Data for the table Users*/
-insert into `Users`(UserId, FirstName, LastName, DOB, Gender, Email, Tel, UserName, Password) values
-(1, 'Bobby', 'Smith', '2000-10-05', 'Male', 'bob.smiyth@gmail.com', '0890990044', 'smbobby', '05bobby10'),
-(2, 'Natacha', 'Rose', '2003-11-09', 'Female', 'rose.nc@gmail.com', '0680773222', 'naTarose', '99rosen11'),
-(3, 'Enola', 'Holmes', '2005-01-23', 'Female', 'eno.hol@gmail.com', '0999970099', 'enoLa', 'enolaholmes'),
-(4, 'John', 'Wick', '1998-05-06', 'Male', 'wick.john@gmail.com', '0873998755', 'johnW', 'john998'),
-(5, 'Mia', 'Chloe', '1999-12-25', 'Male', 'miao.loe@hotmail.com', '0822394562', 'Cmia', 'miach25'),
-(6, 'Amma', 'Bootang', '1995-02-21', 'Female', 'Amma.Boo@gmail.com', '0657846958', 'Emmaaa', 'boomyema21'),
-(7, 'Victoria', 'Genesis', '1999-07-28', 'Female', 'victoria.secret@gmail.com', '0932122333', 'SeaVictoria', 'victosea28'),
-(8, 'Andrew', 'Iris', '2008-11-04', 'Male', 'iris.an@hotmail.com', '0920989807', 'Andrew', 'irisAn04'),
-(9, 'Olivia', 'Madison', '2000-02-21', 'Female', 'olivia.25@gmail.com', '0916543243', 'olivia', 'Medison.21'),
-(10, 'Roger', 'Haider', '1996-12-12', 'Male', 'roger.12@hotmail.com', '0837213455', 'Roger', 'roger1996'),
-(11, 'Chedah', 'Jeong', '1998-12-13', 'Female', 'chedahlovejaehyun@gmail.com', '0818947381', 'JeongChedah', 'chedah.jeong13');
-
 /*Data for the table Roles*/
 insert into `Roles`(RoleId, RoleName) values
 (1, 'Admin'),
 (2, 'User');
-
-/*Data for the table UserRole*/
-insert into `UserRole`(UserId, RoleId) values
-(1, 1),
-(2, 1),
-(3, 2),
-(4, 2),
-(5, 2),
-(6, 2),
-(7, 2),
-(8, 2),
-(9, 2),
-(10, 2),
-(11, 2);
 
 /*Data for the table SkorProduct*/
 insert into `SkorProduct` (ProductId, ColorId) values
@@ -237,19 +208,19 @@ insert into `SkorProduct` (ProductId, ColorId) values
 (23, 5),
 (23, 8);
 
-/*Data for the table Carts*/
-insert into `Carts` (CartId, UserId, ProductId, Quantity, Total) values
-(1, 3, 9, 1, '4200.00'),
-(2, 3, 1, 1, '3200.00'),
-(3, 1, 22, 1, '4200.00'),
-(4, 9, 23, 1, '5800.00'),
-(5, 10, 6, 2, '6400.00'),
-(6, 6, 8, 1, '5000.00'),
-(7, 7, 4, 1, '6500.00'),
-(8, 5, 7, 1, '4700.00'),
-(9, 11, 19, 1, '2900.00'),
-(10, 11, 20, 1, '3200.00'),
-(11, 8, 21, 1, '2300.00'),
-(12, 8, 20, 1, '3200.00');
-
 COMMIT;
+
+/* create user and grant privileges */
+show databases;
+select user,host from mysql.user;
+create user 'backend'@'%' identified by 'skorshoptobe';
+
+grant create, select, update, delete on skorshop.* to 'backend'@'%';
+grant insert on skorshop.Products to 'backend'@'%';
+grant insert on skorshop.Brands to 'backend'@'%';
+grant insert on skorshop.Users to 'backend'@'%';
+grant insert on skorshop.UserRole to 'backend'@'%';
+grant insert on skorshop.Colors to 'backend'@'%';
+grant insert on skorshop.SkorProduct to 'backend'@'%';
+grant insert on skorshop.Carts to 'backend'@'%';
+flush privileges;
