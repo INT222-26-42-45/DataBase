@@ -213,7 +213,7 @@ COMMIT;
 /* create user and grant privileges */
 show databases;
 select user,host from mysql.user;
-create user 'backend'@'%' identified by 'skorshoptobe';
+create user 'backend'@'%' identified by 'backendproject';
 
 grant create, select, update, delete on skorshop.* to 'backend'@'%';
 grant insert on skorshop.Products to 'backend'@'%';
