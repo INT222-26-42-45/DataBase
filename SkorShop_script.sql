@@ -3,10 +3,10 @@ USE `skorshop`;
 
 DROP TABLE IF EXISTS `Brands`;
 CREATE TABLE `Brands` (
-    `BrandId` INT(10) NOT NULL,
-    `BrandName` VARCHAR(40) NOT NULL
+    `BrandId` INT(10) NOT NULL AUTO_INCREMENT,
+    `BrandName` VARCHAR(40) NOT NULL,
+     PRIMARY KEY (BrandId)
 );
-ALTER TABLE `Brands` ADD CONSTRAINT `brands_pk` PRIMARY KEY ( `BrandId` );
 
 DROP TABLE IF EXISTS `Products`;
 CREATE TABLE `Products` (
@@ -24,10 +24,10 @@ CREATE TABLE `Products` (
 
 DROP TABLE IF EXISTS `Colors`;
 CREATE TABLE `Colors` (
-    `ColorId` INT(10) NOT NULL,
-    `ColorName` VARCHAR(15) NOT NULL
+    `ColorId` INT(10) NOT NULL AUTO_INCREMENT,
+    `ColorName` VARCHAR(15) NOT NULL,
+     PRIMARY KEY (ProductId)
 );
-ALTER TABLE `Colors` ADD CONSTRAINT `colors_pk` PRIMARY KEY ( `ColorId` );
 
 DROP TABLE IF EXISTS `Users`;
 CREATE TABLE `Users` (
