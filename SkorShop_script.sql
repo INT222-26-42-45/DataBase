@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `Colors`;
 CREATE TABLE `Colors` (
     `ColorId` INT(10) NOT NULL AUTO_INCREMENT,
     `ColorName` VARCHAR(15) NOT NULL,
-     PRIMARY KEY (ProductId)
+     PRIMARY KEY (ColorId)
 );
 
 DROP TABLE IF EXISTS `Users`;
