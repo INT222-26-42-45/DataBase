@@ -8,6 +8,13 @@ CREATE TABLE `Brands` (
      PRIMARY KEY (BrandId)
 );
 
+DROP TABLE IF EXISTS `Colors`;
+CREATE TABLE `Colors` (
+    `ColorId` INT(10) NOT NULL AUTO_INCREMENT,
+    `ColorName` VARCHAR(15) NOT NULL,
+     PRIMARY KEY (ColorId)
+);
+
 DROP TABLE IF EXISTS `Products`;
 CREATE TABLE `Products` (
     `ProductId` INT(10) NOT NULL AUTO_INCREMENT,
@@ -28,13 +35,6 @@ ALTER TABLE `Products`
 ALTER TABLE `Products`
     ADD CONSTRAINT `product_color_fk` FOREIGN KEY ( `ColorId` )
         REFERENCES `Colors` ( `ColorId` );
-
-DROP TABLE IF EXISTS `Colors`;
-CREATE TABLE `Colors` (
-    `ColorId` INT(10) NOT NULL AUTO_INCREMENT,
-    `ColorName` VARCHAR(15) NOT NULL,
-     PRIMARY KEY (ColorId)
-);
 
 DROP TABLE IF EXISTS `Users`;
 CREATE TABLE `Users` (
@@ -96,6 +96,19 @@ insert into `Brands` (BrandId, BrandName) values
 (5, 'Vans'),
 (6, 'Fila');
 
+/*Data for the table Colors*/
+insert into `Colors` (ColorId, ColorName) values
+(1, '#000000'),
+(2, '#FFFFFF'),
+(3, '#B7B7A4'),
+(4, '#70E000'),
+(5, '#56CFE1'),
+(6, '#013A63'),
+(7, '#BE0AFF'),
+(8, '#FF7AA2'),
+(9, '#EF233C'),
+(10, '#FFE100');
+
 /*Data for the table Products*/
 insert  into `Products`(ProductId, ProductName, ProductDescription, ProductType, ProductSize, ProductPrice, ProductDate, ProductImg, BrandId, ColorId) values 
 (1, 'STAN SMITH', 'Trying to decide between sporty casual and dressed-up glam? Why not do both? These adidas Stan Smith shoes have the same buttery-soft leather upper as the 1971 original, dressed up with sparkling crystals from Swarovski.', 'Men/Women', '35.5-44', '3200.00', '2020-08-13', 'stansmith.png', 1, 2),
@@ -122,24 +135,10 @@ insert  into `Products`(ProductId, ProductName, ProductDescription, ProductType,
 (22, 'FuelCell Trainer', 'Subtle and stylish, the women Sola Sleek shoe highlights your femininity by accentuating your stance. The almond-shaped toe is unique in its design, while the open collar provides exceptional support without sacrificing style points. With a lightweight EVA foam cushioning and an NB Comfort Insert for added support, these women shoes are comfortable enough for all-day wear.', 'Women', '35.5-40', '4200.00', '2021-04-18', 'fuelcell.png', 3, 2),
 (23, 'TWO WXY', 'For the players unbound by position, no longer defined by 1 through 5, the TWO WXY is built for your style of play. Hyper-engineered for speed and agility at both ends of the court, it’s a performance shoe packed with tech for that explosive moment when you switch from offense to defense to offense again. The TWO WXY specializes in versatility—the playmaker of today’s positionless game.', 'Men', '40-46', '5800.00', '2021-04-13', 'twowxy.png', 3, 6);
 
-/*Data for the table Colors*/
-insert into `Colors` (ColorId, ColorName) values
-(1, '#000000'),
-(2, '#FFFFFF'),
-(3, '#B7B7A4'),
-(4, '#70E000'),
-(5, '#56CFE1'),
-(6, '#013A63'),
-(7, '#BE0AFF'),
-(8, '#FF7AA2'),
-(9, '#EF233C'),
-(10, '#FFE100');
-
 /*Data for the table Roles*/
 insert into `Roles`(RoleId, RoleName) values
 (1, 'Admin'),
 (2, 'User');
-
 
 COMMIT;
 
