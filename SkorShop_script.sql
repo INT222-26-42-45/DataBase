@@ -140,6 +140,31 @@ insert into `Roles`(RoleId, RoleName) values
 (1, 'Admin'),
 (2, 'User');
 
+/*Data for the table Users*/
+insert into `Users`(UserId, FirstName, LastName, DOB, Gender, Email, Tel, UserName, Password) values 
+(1, 'natti', 'mahapan', '2000-12-08', 'Female', 'nattima09@gmail.com', '0925838618', 'natti', '$2a$10$QAPIFKje5c.e6mgEgYU7T.S3f4El6hiM3Pxd2KHY2OXTDHTrgUO7a'),
+(2, 'niraphon', 'jongkraijak', '2000-02-21', 'Female', 'nira.apple@gmail.com', '0935960619', 'apple', '$2a$10$1gncpGFM/OgZAdSSSgcK6Olf5OR/dh7cA5DNlXVUZ2Y8INZ6VZtP2'),
+(3, 'Donlawan', 'petcharat', '2000-11-13', 'Female', 'donlawan13@gmail.com', '0818947381', 'pukboong', '$2a$10$lMfbVGon2h4wJhH3YSCmne/wMwrhzZ7S1zycyOBQR5QVnp4rOg4ZK'),
+(4, 'Enola', 'Holmes', '2005-01-23', 'Female', 'eno.hol@gmail.com', '0999970099', 'enoLa', '$2a$10$1XSjcxerE4TQzKKn3m4ZCOQ1yHL15Ewdtl2XdYoPupwNA3keNrZdq'),
+(5, 'John', 'Wick', '1998-05-06', 'Male', 'wick.john@gmail.com', '0873998755', 'johnW', '$2a$10$XVj2jWzViKHMe4Wj86A80.SRRsRmF2U76/sRi95fJgHdHcq9uJ.AK'),
+(6, 'Mia', 'Chloe', '1999-12-25', 'Male', 'miao.loe@hotmail.com', '0822394562', 'Cmia', '$2a$10$.QNtpvTB5brpLRnYzPecP.A5/dXEBj273RwiLJ.scL.yf/JUJ6vWS'),
+(7, 'Amma', 'Bootang', '1995-02-21', 'Female', 'Amma.Boo@gmail.com', '0657846958', 'Emmaaa', '$2a$10$7JOD.UrK6JZBJtaUG2O7K.nx/8GdrNmsodWI1eCFrsGs8/vQk60S2'),
+(8, 'Victoria', 'Genesis', '1999-07-28', 'Female', 'victoria.secret@gmail.com', '0932122333', 'SeaVictoria', '$2a$10$qpsJiWeig9iRamyVvZ2Alu4AP6vUGcXK6ge6b8xleil9p96YlOQxa'),
+(9, 'Natacha', 'Rose', '2003-11-09', 'Female', 'rose.nc@gmail.com', '0680773222', 'naTarose', '$2a$10$vBimFlN2XNsrK7t7eV2XT.u/wAAPHeBcZ5OerZno63UCZyVzLiFJy');
+
+
+/*Data for the table UserRole*/
+insert into `UserRole`(UserId, RoleId) values 
+(1,1),
+(2,1),
+(3,1),
+(4,2),
+(5,2),
+(6,2),
+(7,2),
+(8,2),
+(9,2);
+
 COMMIT;
 
 /* create user and grant privileges */
@@ -156,3 +181,5 @@ grant insert on skorshop.Colors to 'backend'@'%';
 grant insert on skorshop.SkorProduct to 'backend'@'%';
 grant insert on skorshop.Carts to 'backend'@'%';
 flush privileges;
+
+
