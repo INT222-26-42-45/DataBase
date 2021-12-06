@@ -178,7 +178,6 @@ grant insert on skorshop.Brands to 'backend'@'%';
 grant insert on skorshop.Users to 'backend'@'%';
 grant insert on skorshop.UserRole to 'backend'@'%';
 grant insert on skorshop.Colors to 'backend'@'%';
-grant insert on skorshop.SkorProduct to 'backend'@'%';
 grant insert on skorshop.Carts to 'backend'@'%';
 flush privileges;
 
